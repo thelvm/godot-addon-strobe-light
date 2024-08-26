@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://4k7lajmr0rkd"]
+
+[ext_resource type="Script" path="res://spot_light_3d.gd" id="1_hy2sd"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.612838, 0.790209, 0, -0.790209, 0.612838, -4.76837e-07, 5.29291, 4.6677)
+spot_range = 19.1015
+spot_attenuation = 2.0
+spot_angle_attenuation = 0.1
+script = ExtResource("1_hy2sd")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75562, 0, -0.985687)
+size = Vector3(15.1304, 1, 15.5473)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.244806, -0.524729, 0.815309, 0.1509, 0.851269, 0.502563, -0.957757, 0, 0.287578, 5.50223, 5.38763, 1.21419)

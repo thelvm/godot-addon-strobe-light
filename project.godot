@@ -17,3 +17,7 @@ config/icon="res://icon.svg"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/strobe_lights/plugin.cfg")
+
+[rendering]
+
+lights_and_shadows/use_physical_light_units=true
