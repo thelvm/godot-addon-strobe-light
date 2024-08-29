@@ -1,5 +1,5 @@
 @tool
-class_name StrobeLight
+class_name StrobeLight3D
 extends Light3D
 
 ## The light will only strobe if set to on
@@ -11,7 +11,7 @@ extends Light3D
 			strobe = new_value
 
 ## Frequency of the strobe, in Hz
-@export_range(1, 30) var frequency: int = 10
+@export_range(1.0, 30.0, 1.0, "suffix:Hz") var frequency: float = 10.0
 
 @export_range(0.0, 1.0) var duty_cycle: float = 0.5
 

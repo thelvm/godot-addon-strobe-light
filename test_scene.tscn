@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://4k7lajmr0rkd"]
 
-[ext_resource type="Script" path="res://spot_light_3d.gd" id="1_hy2sd"]
+[ext_resource type="Script" path="res://addons/strobe_lights/strobe_light_3D.gd" id="1_e1imk"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -9,7 +9,7 @@ transform = Transform3D(1, 0, 0, 0, 0.612838, 0.790209, 0, -0.790209, 0.612838, 
 spot_range = 19.1015
 spot_attenuation = 2.0
 spot_angle_attenuation = 0.1
-script = ExtResource("1_hy2sd")
+script = ExtResource("1_e1imk")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75562, 0, -0.985687)
