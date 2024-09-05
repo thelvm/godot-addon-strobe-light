@@ -1,19 +1,61 @@
-[gd_scene load_steps=2 format=3 uid="uid://4k7lajmr0rkd"]
+[gd_scene load_steps=3 format=3 uid="uid://4k7lajmr0rkd"]
 
 [ext_resource type="Script" path="res://addons/strobe_lights/strobe_light_3D.gd" id="1_e1imk"]
+
+[sub_resource type="GDScript" id="GDScript_hkvvd"]
+script/source = "extends CheckButton
+
+@export var lights: Array[StrobeLight3D]
+
+
+func _on_toggled(toggled_on: bool) -> void:
+	for strobe in lights:
+		strobe.active = toggled_on
+"
 
 [node name="Node3D" type="Node3D"]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.612838, 0.790209, 0, -0.790209, 0.612838, -4.76837e-07, 5.29291, 4.6677)
-spot_range = 19.1015
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+light_bake_mode = 0
+spot_range = 25.0
 spot_attenuation = 2.0
+spot_angle = 15.0
 spot_angle_attenuation = 0.1
 script = ExtResource("1_e1imk")
+duty_cycle = 0.2
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75562, 0, -0.985687)
-size = Vector3(15.1304, 1, 15.5473)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+size = Vector3(20, 1, 20)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.244806, -0.524729, 0.815309, 0.1509, 0.851269, 0.502563, -0.957757, 0, 0.287578, 5.50223, 5.38763, 1.21419)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3.16992, 2.08668, -4.60912)
+omni_range = 20.0
+omni_attenuation = 2.0
+script = ExtResource("1_e1imk")
+frequency = 1.0
+property_to_strobe = 7
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CheckButton" type="CheckButton" parent="Control" node_paths=PackedStringArray("lights")]
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 24.0
+text = "Toggle Strobe"
+script = SubResource("GDScript_hkvvd")
+lights = [NodePath("../../SpotLight3D"), NodePath("../../OmniLight3D")]
+
+[connection signal="toggled" from="Control/CheckButton" to="Control/CheckButton" method="_on_toggled"]
