@@ -6,11 +6,8 @@ extends Light3D
 
 ## The different properties that can be used to strobe the light.
 enum StrobableProperties {
-	## Sets [member Light3D.light_energy] to [code]0[/code] during the OFF cycle.
 	ENERGY = 1,
-	## Sets [member Light3D.light_color] to [constant Color.BLACK] during the OFF cycle.
 	COLOR = 2,
-	## Sets [member Light3D.light_intensity_lumens] to [code]0[/code] during the OFF cycle.
 	## [u]Only available[/u] if using physical light units
 	INTENSITY = 4,
 }
@@ -56,7 +53,7 @@ enum StrobableProperties {
 ## A 0.25 duty cycle means the light is ON for 25% of the time and OFF for 75%.
 @export_range(0.0, 1.0) var duty_cycle: float = 0.5
 
-## The specific property that will be modified to achieve the strobing effect. Every property will have it's initial value during the ON state and will return to that initial value once the strobing is stopped.
+## The specific properties that will be modified to achieve the strobing effect.
 @export_flags("Energy:1", "Color:2", "Intensity:4") var property_to_strobe: int = StrobableProperties.ENERGY:
 	set(new_value):
 		if not active:
